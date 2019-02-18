@@ -1,0 +1,147 @@
+
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+
+		<title>Calculadora</title>
+
+		<!-- bootstrap - link cdn -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <script type="text/javascript">
+        
+        function calcular(){
+			//variaveis que fazem referência aos elementos da página
+            var operacao = document.getElementById("operacao").value;
+            var primeiroNumero = document.getElementById("primeiroNumero").value;
+            var segundoNumero = document.getElementById("segundoNumero").value;
+            var resultado = null; //Variavel que receberá o resultado
+
+			//Convertendo os valores recebidos para o tipo float
+			operacao = parseFloat(operacao);
+			primeiroNumero = parseFloat(primeiroNumero);
+			segundoNumero = parseFloat(segundoNumero);
+
+			//Switch responsável pela escolha da operação
+            switch(operacao){
+                case 1: //subtracao
+                    resultado = primeiroNumero - segundoNumero;
+                    break;
+                case 2: //adicao
+                    resultado = primeiroNumero + segundoNumero;
+                    break;
+                case 3: //multiplicacao
+                    resultado = primeiroNumero * segundoNumero;
+                    break;
+                case 4: //divisao
+                    resultado = primeiroNumero / segundoNumero;
+                    break;
+                default:
+                    alert("Operação não selecionada");
+                    return false;
+            }
+
+			//Verificação de número válido
+            if(primeiroNumero == "" || segundoNumero == "" || primeiroNumero == null || segundoNumero == null){
+                alert("Digite algum número, os números foram inválidos");
+				return false;
+            }
+
+            document.getElementById("campoResultado").value = resultado;
+        }
+			
+		</script>
+
+		<style>
+
+			.titulo h1{
+				font-size: 40px;
+				text-align: center;
+				font-weight: bold;
+				padding: 10px;
+			}
+
+			.btn-calcular{
+				background-color: brown;
+				height: 50px;
+				font-size: 20px;
+			}
+
+			.resposta label{
+				text-align: center;
+				font-size: 20px;
+			}
+
+
+		</style>
+	</head>
+
+	<body>
+		
+		<div class="container">
+			<div class="titulo">
+				<h1>Calculadora Simples</h1>
+			</div>
+
+			<hr />
+
+			<div class="row">
+				<div class="col-sm-4"></div>
+				<div class="col-sm-4">
+					<input id="primeiroNumero" type="text" class="form-control" placeholder="Digite um número" />
+				</div>
+				<div class="col-sm-4"></div>
+			</div>
+			
+			<br />
+
+			<div class="row">
+				<div class="col-sm-4"></div>
+				<div class="col-sm-4">
+					<select id="operacao" class="form-control">
+						<option value="">Operação</option>
+						<option value="1">Subtração</option>
+						<option value="2">Adição</option>
+						<option value="3">Multiplicação</option>
+						<option value="4">Divisão</option>
+					</select>
+				</div>
+				<div class="col-sm-4"></div>
+			</div>
+			
+			<br />
+
+			<div class="row">
+				<div class="col-sm-4"></div>	
+				<div class="col-sm-4">
+					<input id="segundoNumero" type="text" class="form-control" placeholder="Digite um número"/>
+				</div>
+				<div class="col-sm-4"></div>
+			</div>
+
+			<hr />
+
+			<div class="row">
+				<div class="col-sm-4"></div>
+				
+				<div class="col-sm-4">
+					<button onclick="calcular()" type="button" class="btn-calcular btn btn-primary form-control">Calcular</button>
+				</div>
+
+				<div class="col-sm-4"></div>
+			</div>
+
+			<hr />
+
+			<div class="resposta row">
+				<div class="col-sm-4"></div>
+				<div class="col-sm-4 well">
+					<label>Resultado</label>
+					<input id="campoResultado" type="text" class="form-control" readonly/>
+				</div>
+				<div class="col-sm-4"></div>
+			</div>
+		</div>
+	</body>
+</html>
